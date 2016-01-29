@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "531f7dd827d9e907efe05371387d9dc8",
+    "content-hash": "10f735628338a539150a0eb0337bafde",
+    "packages": [
+        {
+            "name": "rpk/php-toolbox",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Repkit/php-utils.git",
+                "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Repkit/php-utils/zipball/9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+                "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RpkUtils\\": "src/RpkUtils"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Repkit",
+                    "email": "repkit@gmail.com",
+                    "homepage": "http://7qbs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A php toolbox useful in every project",
+            "keywords": [
+                "Toolbox",
+                "php",
+                "utils"
+            ],
+            "time": "2015-12-07 15:19:49"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.23"
+    },
+    "platform-dev": []
+}

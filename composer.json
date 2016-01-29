@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nikic/fast-route": "^0.7.0",
+        "rpk/acid-storage": "^1.0"
+    }
+}

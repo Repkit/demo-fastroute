@@ -1,0 +1,23 @@
+{
+    "name": "rpk/acid-storage",
+    "type": "library",
+    "description": "Implementation of an ACID (Atomicity, Consistency, Isolation, Durability) storage using file system",
+    "keywords": ["php","A.C.I.D.", "storage"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Repkit",
+            "email": "repkit@gmail.com",
+            "homepage": "http://7qbs.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.23"
+        ,
+        "rpk/php-toolbox": "0.2.*"
+    },
+    "autoload": {
+        "psr-4": {"RpkAcidStorage\\": "src/RpkAcidStorage"}
+    }
+}

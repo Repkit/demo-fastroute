@@ -1,0 +1,138 @@
+[
+    {
+        "name": "nikic/fast-route",
+        "version": "v0.7.0",
+        "version_normalized": "0.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/FastRoute.git",
+            "reference": "8164b4a0d8afde4eae5f1bfc39084972ba23ad36"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/FastRoute/zipball/8164b4a0d8afde4eae5f1bfc39084972ba23ad36",
+            "reference": "8164b4a0d8afde4eae5f1bfc39084972ba23ad36",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2015-12-20 19:50:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FastRoute\\": "src/"
+            },
+            "files": [
+                "src/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Nikita Popov",
+                "email": "nikic@php.net"
+            }
+        ],
+        "description": "Fast request router for PHP",
+        "keywords": [
+            "router",
+            "routing"
+        ]
+    },
+    {
+        "name": "rpk/php-toolbox",
+        "version": "0.2.2",
+        "version_normalized": "0.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Repkit/php-utils.git",
+            "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Repkit/php-utils/zipball/9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+            "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23"
+        },
+        "time": "2015-12-07 15:19:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "RpkUtils\\": "src/RpkUtils"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Repkit",
+                "email": "repkit@gmail.com",
+                "homepage": "http://7qbs.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A php toolbox useful in every project",
+        "keywords": [
+            "Toolbox",
+            "php",
+            "utils"
+        ]
+    },
+    {
+        "name": "rpk/acid-storage",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Repkit/acid-storage.git",
+            "reference": "e65d5489555c6695b9b8876e1c6db7ccd1ad6d61"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Repkit/acid-storage/zipball/e65d5489555c6695b9b8876e1c6db7ccd1ad6d61",
+            "reference": "e65d5489555c6695b9b8876e1c6db7ccd1ad6d61",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.23",
+            "rpk/php-toolbox": "0.2.*"
+        },
+        "time": "2015-12-07 15:29:05",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "RpkAcidStorage\\": "src/RpkAcidStorage"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Repkit",
+                "email": "repkit@gmail.com",
+                "homepage": "http://7qbs.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of an ACID (Atomicity, Consistency, Isolation, Durability) storage using file system",
+        "keywords": [
+            "A.C.I.D.",
+            "php",
+            "storage"
+        ]
+    }
+]

@@ -1,0 +1,149 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "6a253368106554e15b8c6953015608eb",
+    "content-hash": "c1feb4f4576e29d633e4661db63e6c6e",
+    "packages": [
+        {
+            "name": "nikic/fast-route",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "8164b4a0d8afde4eae5f1bfc39084972ba23ad36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/8164b4a0d8afde4eae5f1bfc39084972ba23ad36",
+                "reference": "8164b4a0d8afde4eae5f1bfc39084972ba23ad36",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Fast request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2015-12-20 19:50:12"
+        },
+        {
+            "name": "rpk/acid-storage",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Repkit/acid-storage.git",
+                "reference": "e65d5489555c6695b9b8876e1c6db7ccd1ad6d61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Repkit/acid-storage/zipball/e65d5489555c6695b9b8876e1c6db7ccd1ad6d61",
+                "reference": "e65d5489555c6695b9b8876e1c6db7ccd1ad6d61",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23",
+                "rpk/php-toolbox": "0.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RpkAcidStorage\\": "src/RpkAcidStorage"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Repkit",
+                    "email": "repkit@gmail.com",
+                    "homepage": "http://7qbs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Implementation of an ACID (Atomicity, Consistency, Isolation, Durability) storage using file system",
+            "keywords": [
+                "A.C.I.D.",
+                "php",
+                "storage"
+            ],
+            "time": "2015-12-07 15:29:05"
+        },
+        {
+            "name": "rpk/php-toolbox",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Repkit/php-utils.git",
+                "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Repkit/php-utils/zipball/9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+                "reference": "9b3a7bc8077376e8d854ccca413e6c101f444e3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RpkUtils\\": "src/RpkUtils"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Repkit",
+                    "email": "repkit@gmail.com",
+                    "homepage": "http://7qbs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A php toolbox useful in every project",
+            "keywords": [
+                "Toolbox",
+                "php",
+                "utils"
+            ],
+            "time": "2015-12-07 15:19:49"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

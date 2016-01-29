@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example of rpk-utils-toolbox</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <?php require 'src/RpkUtils/Sysinfo/Server.php';?>
+        <?php require 'src/RpkUtils/Sysinfo/Client.php';?>
+        <?php require 'src/RpkUtils/Converter/Time.php';?>
+        <?php require 'src/RpkUtils/Converter/Size.php';?>
+        <?php require 'src/RpkUtils/Math.php';?>
+        <?php use RpkUtils\Sysinfo\Server as server;?>
+        <?php use RpkUtils\Sysinfo\Client as client;?>
+        <?php use RpkUtils\Converter as conv;?>
+        <?php use RpkUtils\Math as math;?>
+    </head>
+    <body>
+        <!--Server params-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Server info</div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td><?=server::hostname()?> <i>(<?=server::name()?>)</i></td>
+              </tr>
+              <tr>
+                <td>Ip:</td>
+                <td><?=server::ip()?></td>
+              </tr>
+              <tr>
+                <td>Os:</td>
+                <td><?=server::os()?></td>
+              </tr>
+              <tr>
+                <td>Kernel:</td>
+                <td><?=server::kernel()?></td>
+              </tr>
+              <tr>
+                <td>Software:</td>
+                <td><?=server::software()?></td>
+              </tr>
+              <tr>
+                <td>Language:</td>
+                <td><?=server::language()?></td>
+              </tr>
+              <tr>
+                <td>Port:</td>
+                <td><?=server::port()?></td>
+              </tr>
+              <tr>
+                <td>Document root:</td>
+                <td><?=server::docroot()?></td>
+              </tr>
+              <tr>
+                <td>Administrator email:</td>
+                <td><?=server::adminmail()?></td>
+              </tr>
+              <tr>
+                <td>Average load:</td>
+                <td>1min: <?=server::avgload()->min1?> | 5min: <?=server::avgload()->min5?> | 15min: <?=server::avgload()->min15?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!--Real time data-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Real time data</div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Cpu:</td>
+                <td><?=server::cpu()->summary?></td>
+              </tr>
+              <tr>
+                <td>Uptime:</td>
+                <td><?=conv\Time::sec2time(server::uptime())?></td>
+              </tr>
+              <tr>
+                <td>Usage:</td>
+                <td>
+                    <?php
+                        $cci1 = server::cpuCoreInfo();
+                        sleep(1);
+                        $cci2 = server::cpuCoreInfo();
+                        $data = server::cpuPercentages($cci1, $cci2);
+                        echo $data['cpu0']['user']."%us,  ".$data['cpu0']['sys']."%sy,  ".$data['cpu0']['nice']."%ni, ".$data['cpu0']['idle']."%id,  ".$data['cpu0']['iowait']."%wa,  ".$data['cpu0']['irq']."%irq,  ".$data['cpu0']['softirq']."%softirq";
+                    ?>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!--Space usage-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Space usage:</div>
+          <p>Total: <?=conv\Size::convert(server::hdd()->total)?> | Used: <?=conv\Size::convert(server::hdd()->total - server::hdd()->free)?> | Free: <?=conv\Size::convert(server::hdd()->free)?></p>
+          <div class="progress">
+            <?php $hddPerc = round(math::percentage(server::hdd()->total - server::hdd()->free, server::hdd()->total),2);?>
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?=$hddPerc?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$hddPerc?>%;">
+              <?=$hddPerc?>%
+            </div>
+          </div>
+        </div>
+        
+        <!--Memory usage-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Memory usage:</div>
+          <p>Total: <?=conv\Size::convert(server::memory()->used + server::memory()->free)?> | Used: <?=conv\Size::convert(server::memory()->used)?> | Free: <?=conv\Size::convert(server::memory()->free)?></p>
+          <div class="progress">
+            <?php $memPerc = round(math::percentage(server::memory()->used, server::memory()->total),2);?>
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?=$memPerc?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$memPerc?>%;">
+              <?=$memPerc?>%
+            </div>
+          </div>
+          <p>Cache: <?=conv\Size::convert(server::memory()->cached)?> | Buffers: <?=conv\Size::convert(server::memory()->buffers)?></p>
+          <div class="progress">
+            <?php $memCachePerc = round(math::percentage(server::memory()->cached, server::memory()->total),2);?>
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?=$memCachePerc?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$memCachePerc?>%;">
+              <?=$memCachePerc?>%
+            </div>
+          </div>
+          <p><strong>Real</strong> used: <?=conv\Size::convert(server::memory()->real->used)?> | free: <?=conv\Size::convert(server::memory()->real->free)?></p>
+          <div class="progress">
+            <?php $memRealPerc = round(math::percentage(server::memory()->real->used, server::memory()->total),2);?>
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<?=$memRealPerc?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$memRealPerc?>%;">
+              <?=$memRealPerc?>%
+            </div>
+          </div>
+          <p><strong>Swap</strong> used: <?=conv\Size::convert(server::memory()->swap->used)?> | free: <?=conv\Size::convert(server::memory()->swap->free)?></p>
+          <div class="progress">
+            <?php $memRealPerc = round(math::percentage(server::memory()->swap->used, server::memory()->total),2);?>
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<?=$memRealPerc?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$memRealPerc?>%;">
+              <?=$memRealPerc?>%
+            </div>
+          </div>
+        </div>
+        
+         <!--Network usage-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Network usage:</div>
+          <table class="table">
+            <tbody>
+              <?php foreach(server::network() as $device):?>
+              <tr>
+                <td><?=$device['name']?>:</td>
+                <td>in: <?=conv\Size::convert($device['in'])?></td>
+                <td>out: <?=conv\Size::convert($device['out'])?></td>
+              </tr>
+              <?php endforeach;?>
+            </tbody>
+          </table>
+        </div>
+        
+    <!--SCRIPTS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    </body>
+</html>
